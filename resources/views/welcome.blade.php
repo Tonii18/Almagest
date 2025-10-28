@@ -11,7 +11,7 @@
                 <div class="hero__actions">
                     <a href="{{ route('login') }}" class="btn btn-primary">Entrar</a>
                     {{-- TODO: Set link to more information --}}
-                    <a href="#" class="btn btn-outline">Más información</a>
+                    <a href="{{ route('information') }}" class="btn btn-outline">Más información</a>
                 </div>
             </div>
         </div>

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,8 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 
-Route::get('/login', [AuthController::class, 'index']) -> name('login');
+Route::get('/login',[LoginController::class,'index'])->name('login');
+
+Route::get('/register',[RegisterController::class,'index'])->name('register');
+
+Route::get('/inforamtion',[InformationController::class,'index'])->name('information');

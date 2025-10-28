@@ -19,7 +19,7 @@
                     <button type="submit" class="btn btn-primary">Iniciar sesion</button>
                 </form>
                 <p class="signup-link">
-                    ¿No tienes cuenta? <a href="#">Crea una</a>
+                    ¿No tienes cuenta? <a href="{{ route('register') }}">Crea una</a>
                 </p>
             </div>
         </div>
