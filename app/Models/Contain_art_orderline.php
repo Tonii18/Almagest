@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contain_art_orderline extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $table = 'contain_art_orderlines';
     protected $fillable = ['article_id','order_line_id'];
