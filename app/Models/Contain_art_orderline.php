@@ -15,6 +15,13 @@ class Contain_art_orderline extends Model
     protected $fillable = ['article_id','order_line_id'];
 
     //Article - Contain_Art_OrderLine (1-N) Relationship
-
+    public function Article()
+    {
+        return $this->belongsTo(Article::class, 'article_id');
+    }
     //Order_Line - Contain_Art_OrderLine (1-N) Relationship
+    public function Order_line()
+    {
+        return $this->belongsTo(Article::class, 'order_line_id');
+    }
 }

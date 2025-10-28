@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contain_art_delivlines>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory
  */
-class ContainArtDelivlinesFactory extends Factory
+class ContainArtInvlineFactory extends Factory
 {
     /**
      * Define the model's default state.

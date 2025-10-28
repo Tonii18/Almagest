@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ContainArtDelivlinesController extends Controller
+class ContainArtDelivlineController extends Controller
 {
     //
 }

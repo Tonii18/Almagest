@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Families extends Model
+class Family extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -15,4 +15,13 @@ class Families extends Model
     protected $fillable = ['name','profit_margin','deleted'];
 
     //Family - Article (1-N) Relationship
+    public function Article()
+    {
+        return $this->hasMany(Article::class, 'family_id');
+    }
+
+    public function Product()
+    {
+        return $this->hasMany(Article::class, 'family_id');
+    }
 }
