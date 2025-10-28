@@ -11,11 +11,11 @@ class Bank_entity extends Model
     protected $table = 'bank_entity';
 
     protected $fillable = [
-        'id', 'name', 'ccc', 'deleted'
+        'name', 'ccc', 'deleted'
     ];
 
     public function company(): HasMany{
-        return $this -> hasMany(Company::class);
+        return $this -> hasMany(Company::class, 'bank_entity_id');
     }
 
 }

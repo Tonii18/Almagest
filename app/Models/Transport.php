@@ -11,11 +11,11 @@ class Transport extends Model
     protected $table = 'transports';
 
     protected $fillable = [
-        'id', 'min', 'max', 'price', 'deleted'
+        'min', 'max', 'price', 'deleted'
     ];
 
     public function company(): HasMany{
-        return $this->hasMany(Company::class);
+        return $this->hasMany(Company::class, 'transport_id');
     }
 
 }

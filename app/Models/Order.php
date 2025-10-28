@@ -22,17 +22,17 @@ class Order extends Model
 
 
      public function company(): BelongsTo{
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'company_id');
     }
 
 
     public function deliveryNotes(): HasMany{
-        return $this->hasMany(Delivery_Note::class);
+        return $this->hasMany(Delivery_Note::class, 'order_id');
     }
 
 
     public function orderLines(): HasMany{
-        return $this->hasMany(Order_line::class);
+        return $this->hasMany(Order_line::class, 'order_id');
     }
 
 

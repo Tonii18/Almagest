@@ -11,11 +11,11 @@ class Delivery_term extends Model
     protected $table = 'delivery_terms';
 
     protected $fillable = [
-        'id', 'description', 'deleted'
+        'description', 'deleted'
     ];
 
     public function company(): BelongsTo{
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'del_term_id');
     }
 
 }
