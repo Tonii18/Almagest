@@ -17,14 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/', [HomeController::class, 'index']) -> name('home');
 
-Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/register',[RegisterController::class,'index'])->name('register');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
-Route::get('/inforamtion',[InformationController::class,'index'])->name('information');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+
+Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
+
+
+Route::get('/information', [InformationController::class, 'index'])->name('information');
+
+
+Auth::routes();
+
+
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
