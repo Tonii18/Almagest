@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Delivery_note_line extends Model
+class DeliveryNoteLine extends Model
 {
     use HasFactory;
 
@@ -22,18 +22,18 @@ class Delivery_note_line extends Model
     ];
 
     public function delivery_note(){
-       return $this -> belongsTo(Delivery_note::class, 'delivery_note_id');
+       return $this -> belongsTo(DeliveryNote::class, 'delivery_note_id');
     }
 
     public function order_line(){
-       return $this -> belongsTo(Order_line::class,'order_line_id');
+       return $this -> belongsTo(OrderLine::class,'order_line_id');
     }
 
    public function invoice_line(){
-       return $this -> hasMany(Invoice_line::class, 'delivery_lines_id');
+       return $this -> hasMany(InvoiceLine::class, 'delivery_lines_id');
    }
 
    public function contain_art_delivline(){
-       return $this -> hasMany(contain_art_delivline::class, 'delivery_lines_id');
+       return $this -> hasMany(ContainArtDelivline::class, 'delivery_lines_id');
    }
 }
