@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class InvoiceLine extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $table = 'invoice_lines';
     protected $fillable = [
