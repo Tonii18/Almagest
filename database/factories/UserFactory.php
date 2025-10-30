@@ -29,7 +29,7 @@ class UserFactory extends Factory
         'email' => fake()->unique()->safeEmail(),
         'email_verified_at' => now(),
         'password' => static::$password ??= Hash::make('password'),
-        'company_id' => null,
+        'company_id' => \App\Models\Company::all()->random()->id,
         'type' => 'user',
         'email_confirmed' => 0,
         'activated' => 0,
