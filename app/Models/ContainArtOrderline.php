@@ -21,6 +21,6 @@ class ContainArtOrderline extends Model
     //Order_Line - Contain_Art_OrderLine (1-N) Relationship
     public function Order_line()
     {
-        return $this->belongsTo(Article::class, 'order_line_id');
+        return $this->belongsTo(OrderLine::class, 'order_line_id');
     }
 }
