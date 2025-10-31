@@ -22,25 +22,16 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
+// Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
+// Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'create'])->name('register.post');
 
-Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
-
-
+// Information
 Route::get('/information', [InformationController::class, 'index'])->name('information');
 
-
-Auth::routes();
-
-
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// User home
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');

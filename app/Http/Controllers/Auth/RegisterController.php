@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -64,19 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
         return User::create([
             'firstname' => $data['firstname'],
             'secondname' => $data['secondname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            //
-            'company_id' => 1,         // Valor por defecto o ajusta según tu lógica
-            'type' => 'user',
-            'email_confirmed' => true,
-            'activated' => true,
-            'iscontact' => false,
-            'deleted' => false,
+            'company_id' => \App\Models\Company::all()->random()->id,
+            'type' => 'u',
+            'email_confirmed' => 0,
+            'activated' => 0,
+            'iscontact' => 0,
+            'deleted' => 0,
         ]);
     }
+
+    public function index(){
+        return view ('auth/register');
+    }
+
 }

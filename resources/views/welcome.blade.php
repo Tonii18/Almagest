@@ -9,9 +9,9 @@
                 <h2>Bienvenido a <span>Almagest</span></h2>
                 <p>Optimiza, controla y gestiona tu almacén con una plataforma intuitiva, segura y moderna.</p>
                 <div class="hero__actions">
-                    <a href="{{ route('login') }}" class="btn btn-primary">Entrar</a>
+                    <a href="/login" class="btn btn-primary">Entrar</a>
                     {{-- TODO: Set link to more information --}}
-                    <a href="{{ route('information') }}" class="btn btn-outline">Más información</a>
+                    <a href="/information" class="btn btn-outline">Más información</a>
                 </div>
             </div>
         </div>

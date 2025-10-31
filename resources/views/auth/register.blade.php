@@ -11,11 +11,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="firstname" id="firstanme" placeholder="Tu nombre" required>
+                        <input type="text" name="firstname" id="firstname" placeholder="Tu nombre" required>
                     </div>
                     <div class="form-group">
                         <label for="name">Apellido</label>
-                        <input type="text" name="secondname" id="secondame" placeholder="Apellido" required>
+                        <input type="text" name="secondname" id="secondname" placeholder="Apellido" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
@@ -32,7 +32,7 @@
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>
                 <p class="login-link">
-                    ¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a>
+                    ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
                 </p>
             </div>
         </div>
