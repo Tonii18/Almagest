@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -79,8 +80,15 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function index(){
-        return view ('auth/register');
+    public function index()
+    {
+        return view('auth/register');
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        Auth::logout();
+        return redirect()->route('welcome');
     }
 
 }
