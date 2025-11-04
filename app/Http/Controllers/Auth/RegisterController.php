@@ -88,7 +88,8 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         Auth::logout();
-        return redirect()->route('welcome');
+        return redirect()->route('login') -> with('status', 'Te hemos enviado un mensaje de verifiación a tu correo.
+            Por favor, revíselo para continuar');
     }
 
 }

@@ -7,7 +7,7 @@
         <div class="register-container">
             <div class="register-card">
                 <h2>Crear cuenta <span>Almagest</span></h2>
-                <form method="POST" action="/register" class="register-form">
+                <form method="POST" action="{{ route('register') }}" class="register-form">
                     @csrf
                     <div class="form-group">
                         <label for="name">Nombre</label>
@@ -27,7 +27,8 @@
                     </div>
                     <div class="form-group">
                         <label for="password_confirmation">Confirmar contraseña</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="********" required>
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            placeholder="********" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>

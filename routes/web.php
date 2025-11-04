@@ -22,34 +22,32 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-// Login
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.post');
-
-// Register
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
-
 // Information
+
 Route::get('/information', [InformationController::class, 'index'])->name('information');
 
 // User home
+
 Route::get('/home', function() {
     $user = auth()->user();
     if ($user->type === 'a') {
         return redirect()->route('admin.dashboard');
     }
     return redirect()->route('user.dashboard');
-})->middleware('auth')->name('home');
+})->middleware('auth', 'verified')->name('home');
 
 // Admin panel
+
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware('auth')->name('admin.dashboard');
 
 // User panel
+
 Route::get('/user/dashboard', function () {
     return view('user.dashboard');
 })->middleware('auth')->name('user.dashboard');
 
+// This route controls everything related to users authentication
 
+Auth::routes(['verify' => true]);

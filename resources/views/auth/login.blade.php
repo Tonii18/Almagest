@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                 @endif
-                <form class="login-form" method="POST" action="{{ route('login.post') }}">
+                <form class="login-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -32,6 +32,11 @@
                 <p class="signup-link">
                     ¿No tienes cuenta? <a href="{{ route('register') }}">Crea una</a>
                 </p>
+                @if (session('status'))
+                    <div class="alert alert-succes" style="margin-bottom: 1rem;">
+                        {{ session('status') }}
+                    </div>
+                @endif
             </div>
         </div>
     </section>
