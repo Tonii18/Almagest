@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -71,7 +72,7 @@ class RegisterController extends Controller
             'secondname' => $data['secondname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'company_id' => \App\Models\Company::all()->random()->id,
+            'company_id' => $data['company_id'],
             'type' => 'u',
             'email_confirmed' => 0,
             'activated' => 0,
@@ -92,4 +93,8 @@ class RegisterController extends Controller
             Por favor, revíselo para continuar');
     }
 
+    public function showRegistrationForm(){
+        $companies = Company::all();
+        return view('auth.register', compact('companies'));
+    }
 }

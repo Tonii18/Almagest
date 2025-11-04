@@ -30,6 +30,15 @@
                         <input type="password" name="password_confirmation" id="password_confirmation"
                             placeholder="********" required>
                     </div>
+                    <div class="form-group">
+                        <label for="company_selection">Elige tu compañía</label>
+                        <select name="company_id" id="company_selection">
+                            <option value=""></option>
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>
                 <p class="login-link">
