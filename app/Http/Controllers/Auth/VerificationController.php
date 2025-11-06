@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Auth\Events\Verified;
 
 class VerificationController extends Controller
 {
@@ -34,8 +38,29 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth') -> except('verify');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    public function verify(Request $request, $id, $hash){
+        // if(!URL::hasValidRelativeSignature($request)){
+        //     abort(403, 'Enlace de verificación inválido');
+        // }
+
+        $user = User::findOrFail($id);
+
+        // if(!hash_equals((string) $hash, sha1($user -> getEmailForVerification()))){
+        //     abort(403, 'Enlace de verificación inválido');
+        // }
+
+        if(!$user -> hasVerifiedEmail()){
+            $user -> markEmailAsVerified();
+            $user -> update(['email_confirmed' => 1]);
+
+            event(new Verified($user));
+        }
+
+        return redirect() -> route('login') -> with('status', 'Tu correo ha sido verificado. Ya puedes iniciar sesion');
     }
 }
