@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -23,11 +24,9 @@ Route::get('/', function () {
 })->name('welcome');
 
 // Information
-
 Route::get('/information', [InformationController::class, 'index'])->name('information');
 
 // User home
-
 Route::get('/home', function() {
     $user = auth()->user();
     if ($user->type === 'a') {
@@ -37,17 +36,24 @@ Route::get('/home', function() {
 })->middleware('auth', 'verified')->name('home');
 
 // Admin panel
-
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('auth')->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.dashboard');
 
 // User panel
-
 Route::get('/user/dashboard', function () {
     return view('user.dashboard');
 })->middleware('auth')->name('user.dashboard');
 
 // This route controls everything related to users authentication
-
 Auth::routes(['verify' => true]);
+
+//Route Admin Controll
+Route::resource('admin',AdminController::class);
+
+//Custom routes for the activate and deactivate methods
+Route::post('/admin/{id}/activate', [App\Http\Controllers\AdminController::class, 'activate'])
+    ->name('admin.activate');
+
+Route::post('/admin/{id}/deactivate', [App\Http\Controllers\AdminController::class, 'deactivate'])
+    ->name('admin.deactivate');

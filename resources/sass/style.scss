@@ -1,7 +1,6 @@
-
 // VARIABLES
 
-$font-main: 'Poppins', sans-serif;
+$font-main: "Poppins", sans-serif;
 $primary: #34eba4;
 $primary-dark: #26c68c;
 $text-dark: #111827;
@@ -12,130 +11,161 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 // GENERAL STYLES
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: $font-main;
-  background: $bg-main;
-  color: $text-dark;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  line-height: 1.6;
+    font-family: $font-main;
+    background: $bg-main;
+    color: $text-dark;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
 }
 
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 // HEADER AND FOOTER
 
-.main-header, .main-footer {
-  text-align: center;
-  padding: 1.5rem 1rem;
+.main-header,
+.main-footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
 }
 
 .logo {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: $primary;
-  letter-spacing: 0.5px;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $primary;
+    letter-spacing: 0.5px;
 }
 
 .main-footer {
-  margin-top: auto;
-  font-size: 0.9rem;
-  color: darken($text-dark, 20%);
-  opacity: 0.7;
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: darken($text-dark, 20%);
+    opacity: 0.7;
 }
+
+//ADMIN HEADER
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .header-center {
+    flex: 1;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $text-dark;
+  }
+
+  .header-right button {
+    background: $primary;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: $primary-dark;
+    }
+  }
 
 // MESSAGE SECTION (INIT PAGE)
 
 .hero {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1rem;
-  background: $bg-main;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    background: $bg-main;
 }
 
 .hero__content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .hero__card {
-  background: $bg-card;
-  border-radius: 1.5rem;
-  box-shadow: $shadow;
-  padding: 3rem 2rem;
-  max-width: 600px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: $bg-card;
+    border-radius: 1.5rem;
+    box-shadow: $shadow;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  h2 {
-    font-size: 2.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-
-    span {
-      color: $primary;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     }
-  }
 
-  p {
-    font-size: 1.1rem;
-    color: #374151;
-    margin-bottom: 2rem;
-  }
+    h2 {
+        font-size: 2.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+
+        span {
+            color: $primary;
+        }
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #374151;
+        margin-bottom: 2rem;
+    }
 }
 
 .hero__actions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 
-  .btn {
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-  }
-
-  .btn-primary {
-    background-color: $primary;
-    color: white;
-    box-shadow: 0 4px 10px rgba($primary, 0.3);
-
-    &:hover {
-      background-color: $primary-dark;
+    .btn {
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
     }
-  }
 
-  .btn-outline {
-    border: 2px solid $primary;
-    color: $primary;
+    .btn-primary {
+        background-color: $primary;
+        color: white;
+        box-shadow: 0 4px 10px rgba($primary, 0.3);
 
-    &:hover {
-      background-color: $primary;
-      color: white;
+        &:hover {
+            background-color: $primary-dark;
+        }
     }
-  }
+
+    .btn-outline {
+        border: 2px solid $primary;
+        color: $primary;
+
+        &:hover {
+            background-color: $primary;
+            color: white;
+        }
+    }
 }
-

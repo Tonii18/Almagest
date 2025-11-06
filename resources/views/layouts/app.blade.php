@@ -16,9 +16,6 @@
 <body>
 
     <header class="main-header">
-        {{-- <div class="container">
-            <h1 class="logo">Almagest</h1>
-        </div> --}}
         @yield('header')
     </header>
 
