@@ -50,10 +50,8 @@ Auth::routes(['verify' => true]);
 
 //Route Admin Controll
 Route::resource('admin',AdminController::class);
-
 //Custom routes for the activate and deactivate methods
 Route::post('/admin/{id}/activate', [App\Http\Controllers\AdminController::class, 'activate'])
     ->name('admin.activate');
-
 Route::post('/admin/{id}/deactivate', [App\Http\Controllers\AdminController::class, 'deactivate'])
     ->name('admin.deactivate');

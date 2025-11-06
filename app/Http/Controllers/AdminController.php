@@ -15,7 +15,7 @@ class AdminController extends Controller
         $users = User::where('email_confirmed','1')
                     ->where('deleted',0)
                     ->where('type','u')
-                    ->with('company')->get();
+                    ->with('company')->orderBy('activated','desc')->get();
         return view('admin.dashboard', compact('users'));
     }
 

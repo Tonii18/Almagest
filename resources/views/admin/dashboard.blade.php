@@ -32,7 +32,8 @@
                                     <button type="submit">Activated</button>
                                 </form>
                             @endif
-                            <form action="{{ route('admin.destroy', $user->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('admin.destroy', $user->id) }}" method="POST" style="display:inline;"
+                                onsubmit="return confirmDelete(event)">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button type="submit">Delete</button>
@@ -42,5 +43,13 @@
                 @endforeach
             </tbody>
         </table>
+        <script>
+            function confirmDelete(event) {
+                event.preventDefault();
+                if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+                    event.target.submit();
+                }
+            }
+        </script>
     </div>
 @endsection
