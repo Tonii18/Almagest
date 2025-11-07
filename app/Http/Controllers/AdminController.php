@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Company;
 
 class AdminController extends Controller
 {
@@ -12,10 +13,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::where('email_confirmed','1')
-                    ->where('deleted',0)
-                    ->where('type','u')
-                    ->with('company')->orderBy('activated','desc')->get();
+        $users = User::where('email_confirmed', '1')
+            ->where('deleted', 0)
+            ->where('type', 'u')
+            ->with('company')->orderBy('activated', 'desc')->get();
         return view('admin.dashboard', compact('users'));
     }
 
@@ -65,7 +66,9 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::with('company')->findOrFail($id);
+        $companies = Company::all();
+        return view('admin.userEdit', compact('user', 'companies'));
     }
 
     /**
@@ -73,7 +76,16 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'firstname' => $request->input('firstname'),
+            'secondname' => $request->input('secondname'),
+            'email' => $request->input('email'),
+            'company_id' => $request->input('company_id')
+        ]);
+
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -82,7 +94,7 @@ class AdminController extends Controller
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);
-        $user -> deleted = 1;
+        $user->deleted = 1;
         $user->save();
         return redirect()->back();
     }

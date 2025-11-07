@@ -5,11 +5,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Surname</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Email</th>
-                    <th>Company</th>
-                    <th>Actions</th>
+                    <th>Compañia</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,19 +24,22 @@
                                 <form action="{{ route('admin.deactivate', $user->id) }}" method="POST"
                                     style="display:inline;">
                                     @csrf
-                                    <button type="submit">Deactivated</button>
+                                    <button type="submit" class="deactivate-btn">Desactivar</button>
                                 </form>
                             @else
                                 <form action="{{ route('admin.activate', $user->id) }}" method="POST" style="display:inline;">
                                     @csrf
-                                    <button type="submit">Activated</button>
+                                    <button type="submit" class="activate-btn">Activar</button>
                                 </form>
                             @endif
+
+                            <a href="{{ route('admin.edit', $user->id) }}" class="btn btn-warning">Editar</a>
+
                             <form action="{{ route('admin.destroy', $user->id) }}" method="POST" style="display:inline;"
                                 onsubmit="return confirmDelete(event)">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <button type="submit">Delete</button>
+                                <button type="submit" class="delete-btn">Eliminar</button>
                             </form>
                         </td>
                     </tr>
