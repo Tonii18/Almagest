@@ -17,7 +17,7 @@ class AdminController extends Controller
             ->where('deleted', 0)
             ->where('type', 'u')
             ->with('company')->orderBy('activated', 'desc')->get();
-        return view('admin.dashboard', compact('users'));
+        return view('admin.users.dashboard', compact('users'));
     }
 
     public function activate($id)
@@ -68,7 +68,7 @@ class AdminController extends Controller
     {
         $user = User::with('company')->findOrFail($id);
         $companies = Company::all();
-        return view('admin.userEdit', compact('user', 'companies'));
+        return view('admin.users.userEdit', compact('user', 'companies'));
     }
 
     /**
@@ -85,7 +85,7 @@ class AdminController extends Controller
             'company_id' => $request->input('company_id')
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.users.dashboard');
     }
 
     /**

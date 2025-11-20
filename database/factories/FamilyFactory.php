@@ -17,7 +17,9 @@ class FamilyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'profit_margin' => $this->faker->numberBetween(50,100),
+            'deleted' => false
         ];
     }
 }
