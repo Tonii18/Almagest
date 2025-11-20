@@ -8,7 +8,7 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Apellidos</th>
+                    <th>Apellido</th>
                     <th>Email</th>
                     <th>Compañía</th>
                     <th>Acciones</th>
