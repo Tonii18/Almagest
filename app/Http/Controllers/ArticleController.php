@@ -77,7 +77,7 @@ class ArticleController extends Controller
             'price_min' => $request->input('price_min'),
             'price_max' => $request->input('price_max'),
             'color_name' => $request->input('color_name'),
-            'weight' => $request->input('weignt'),
+            'weight' => $request->input('weight'),
             'size' => $request->input('size'),
             'family_id' => $request->input('family_id'),
         ]);
