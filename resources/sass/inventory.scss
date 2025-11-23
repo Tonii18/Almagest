@@ -1,0 +1,187 @@
+$font-main: "Poppins", sans-serif;
+$primary: #34eba4;
+$card-bg: #ffffff;
+$muted: #6b6b6b;
+$radius: 12px;
+$header-height: 70px;
+
+* { box-sizing: border-box; }
+
+// LIST ARTICLES
+
+.inventory-page {
+  font-family: $font-main;
+  padding: 1.25rem;
+
+  .inventory-add-row {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-add-product {
+    display: inline-block;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0.9rem 1.2rem;
+    text-align: center;
+    background: linear-gradient(90deg, $primary 0%, darken($primary, 5%) 100%);
+    color: white;
+    font-weight: 700;
+    border-radius: $radius;
+    text-decoration: none;
+    font-size: 1.05rem;
+    box-shadow: 0 8px 24px rgba(52, 235, 164, 0.18);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-add-product:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(52,235,164,0.22);
+  }
+
+  .flash-success {
+    background: lighten($primary, 35%);
+    color: darken($primary, 20%);
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    max-width: 1200px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: $card-bg;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 6px 18px rgba(16,16,16,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+
+      .product-card__name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .product-card__color {
+        background: lighten($primary, 45%);
+        color: darken($primary, 30%);
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+
+    &__body {
+      flex: 1;
+      .product-card__description {
+        color: $muted;
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .product-card__meta {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.9rem;
+        color: $muted;
+        display: grid;
+        gap: 0.2rem;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      .btn-card-action {
+        text-decoration: none;
+        padding: 0.4rem 0.7rem;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 1px solid rgba(0,0,0,0.06);
+      }
+      .btn-danger {
+        background: transparent;
+        color: #ef4444;
+        border-color: rgba(239,68,68,0.12);
+      }
+    }
+  }
+
+  .no-products {
+    color: $muted;
+  }
+}
+
+// FORM
+
+.inventory-create {
+  font-family: $font-main;
+  width: 100%;
+  max-width: 900px;
+  padding: 1rem;
+  margin: 1rem auto;
+
+  .product-form {
+    display: grid;
+    gap: 0.75rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.95rem;
+
+      input,
+      textarea,
+      select {
+        padding: 0.6rem 0.8rem;
+        border-radius: 8px;
+        border: 1px solid #e6e6e6;
+        font-family: $font-main;
+        font-size: 0.95rem;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+
+      .btn-primary {
+        background: $primary;
+        color: white;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+        border: none;
+      }
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid #ddd;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+      }
+    }
+  }
+}

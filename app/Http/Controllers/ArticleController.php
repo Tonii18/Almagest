@@ -43,7 +43,7 @@ class ArticleController extends Controller
 
         Article::create($request->all());
 
-        return redirect()->route('admin.article.dashboard');
+        return redirect()->route('articles.index');
     }
 
     /**

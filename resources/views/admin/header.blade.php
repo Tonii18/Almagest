@@ -53,7 +53,6 @@
                     menu.classList.toggle('show-dropdown');
                 });
 
-                // Cerrar menú al hacer click fuera
                 document.addEventListener('click', e => {
                     if (!toggle.contains(e.target) && !menu.contains(e.target)) {
                         menu.classList.remove('show-dropdown');
