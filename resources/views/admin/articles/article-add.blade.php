@@ -29,12 +29,13 @@
             </label>
 
             <label>
-                Precio min
+                Precio mínimo
                 <input type="number" name="price_min" step="0.01" value="{{ old('price_min', 0) }}" required>
+                <select name="min_price" id="min_price"> </select>
             </label>
 
             <label>
-                Precio max
+                Precio máximo
                 <input type="number" name="price_max" step="0.01" value="{{ old('price_max', 0) }}" required>
             </label>
 

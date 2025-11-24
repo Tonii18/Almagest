@@ -92,6 +92,7 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         gap: 0.6rem;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
         transition: 0.3s;
+        font-family: inherit;
 
         &:hover {
             background: $primary-dark;
@@ -132,6 +133,8 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             align-items: center;
             gap: 0.6rem;
             transition: background 0.2s ease;
+            font-family: inherit;
+            font-weight: 400;
 
             i {
                 width: 20px;
@@ -176,7 +179,7 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         border-radius: 1rem;
         overflow: hidden;
         box-shadow: $shadow;
-        font-family: 'Inter', sans-serif;
+        font-family: inherit;
 
         thead {
             background: $primary;
@@ -186,9 +189,9 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
                 text-align: left;
                 padding: 1rem;
                 font-weight: 600;
-                text-transform: uppercase;
                 font-size: 0.9rem;
                 letter-spacing: 0.03em;
+                font-family: inherit;
             }
         }
 
