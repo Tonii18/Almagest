@@ -91,7 +91,7 @@ class ArticleController extends Controller
     public function destroy(string $id)
     {
         $article = Article::findOrFail($id);
-        $article->delete = 1;
+        $article->deleted = 1;
         $article->save();
         return redirect()->back();
     }

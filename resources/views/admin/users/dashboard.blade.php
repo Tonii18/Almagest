@@ -44,8 +44,7 @@
                                 <i class="fas fa-edit"></i> Editar
                             </a>
 
-                            <form action="{{ route('admin.destroy', $user->id) }}" method="POST" style="display:inline;"
-                                onsubmit="return confirmDelete(event)">
+                            <form action="{{ route('admin.destroy', $user->id) }}" method="POST" class="delete-form" style="display:inline;">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button type="submit" class="delete-btn">

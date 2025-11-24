@@ -9,14 +9,6 @@
             <span>Panel de Administración</span>
         </div>
 
-        {{-- <div class="header-right">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                </button>
-            </form>
-        </div> --}}
         <div class="header-right">
             <div class="user-dropdown">
                 <button class="dropdown-toggle">
@@ -43,24 +35,6 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const toggle = document.querySelector('.dropdown-toggle');
-                const menu = document.querySelector('.dropdown-menu');
-
-                toggle.addEventListener('click', () => {
-                    menu.classList.toggle('show-dropdown');
-                });
-
-                document.addEventListener('click', e => {
-                    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-                        menu.classList.remove('show-dropdown');
-                    }
-                });
-            });
-        </script>
-
     </header>
 @endsection
 

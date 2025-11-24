@@ -35,7 +35,11 @@
 
                 <footer class="product-card__footer">
                     <a href="#" class="btn-card-action">Editar</a>
-                    <a href="#" class="btn-card-action btn-danger">Eliminar</a>
+                    <form action="{{ route('articles.destroy', $article->id) }}" method="POST" class="delete-form" style="display:inline;">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                         <button type="submit" class="btn-card-action btn-danger">Eliminar</button>
+                    </form>
                 </footer>
             </article>
         @empty
