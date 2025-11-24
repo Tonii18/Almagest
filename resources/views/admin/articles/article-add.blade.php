@@ -30,13 +30,12 @@
 
             <label>
                 Precio mínimo
-                <input type="number" name="price_min" step="0.01" value="{{ old('price_min', 0) }}" required>
-                <select name="min_price" id="min_price"> </select>
+                <select name="price_min" id="min_price"> </select>
             </label>
 
             <label>
                 Precio máximo
-                <input type="number" name="price_max" step="0.01" value="{{ old('price_max', 0) }}" required>
+                <select name="price_max" id="max_price"> </select>
             </label>
 
             <label>
@@ -66,16 +65,37 @@
 
             <label>
                 Talla
-                <input type="text" name="size" value="{{ old('size') }}">
+                <fieldset style="background-color: white" id="fieldset">
+                    <div class="radio">
+                        <label for="number">Número</label>
+                        <input type="radio" id="number" name="radio" value="number">
+                    </div>
+                    <div>
+                        <label for="simple_value">Valor simple</label>
+                        <input type="radio" id="simple_value" name="radio" value="simple_value">
+                    </div>
+                    <div>
+                        <label for="compound_value">Valor compuesto</label>
+                        <input type="radio" id="compound_value" name="radio" value="compound_value">
+                    </div>
+                    <div class="select-container" id="select-container">
+
+                    </div>
+                </fieldset>
             </label>
 
             <label>
                 Familia
-                <input type="text" name="family_id" value="{{ old('family_id') }}">
+                <select name="family_id" id="family_selection">
+                    <option value="">Selecciona una familia</option>
+                    @foreach ($families as $family)
+                        <option value="{{ $family->id }}">{{ $family->name }}</option>
+                    @endforeach
+                </select>
             </label>
 
             <div class="form-actions">
-                <button type="submit" class="btn-primary">Guardar producto</button>
+                <button type="submit" class="btn-primary">Guardar</button>
                 <a href="{{ route('articles.index') }}" class="btn-secondary">Cancelar</a>
             </div>
         </form>

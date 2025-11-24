@@ -15,7 +15,7 @@
         'resources/js/app.js',
         'resources/js/delete-confirm.js',
         'resources/js/dropdown-menu.js',
-        'resources/js/price-select.js'
+        'resources/js/form-fields.js'
     ])
 </head>
 

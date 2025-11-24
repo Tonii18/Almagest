@@ -21,8 +21,8 @@ class ArticleController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('admin.articles.article-add');
+    {   $families = Family::all();
+        return view('admin.articles.article-add', compact('families'));
     }
 
     /**
