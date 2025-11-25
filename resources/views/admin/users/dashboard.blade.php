@@ -56,14 +56,5 @@
                 @endforeach
             </tbody>
         </table>
-
-        <script>
-            function confirmDelete(event) {
-                event.preventDefault();
-                if (confirm('¿Estás seguro de que quieres eliminar este usuario? ')) {
-                    event.target.submit();
-                }
-            }
-        </script>
     </div>
 @endsection

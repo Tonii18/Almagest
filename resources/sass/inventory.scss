@@ -119,10 +119,58 @@ $header-height: 70px;
         font-weight: 600;
         border: 1px solid rgba(0,0,0,0.06);
       }
-      .btn-danger {
-        background: transparent;
-        color: #ef4444;
-        border-color: rgba(239,68,68,0.12);
+
+       button,
+    a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+
+        width: 7.5rem;
+        height: 2.5rem;
+        border-radius: 0.75rem;
+
+        border: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+
+        i {
+            font-size: 0.9rem;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+      .btn-eliminated {
+        background: linear-gradient(135deg, #ef4444, #b91c1c);
+
+        &:hover {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            box-shadow: 0 4px 12px rgba(#ef4444, 0.35);
+        }
+      }
+
+      .btn-edit {
+        background: linear-gradient(135deg, #ED7014, #FA8128);
+
+        &:hover {
+            background: linear-gradient(135deg, #ED7014, #FA8128);
+            box-shadow: 0 4px 12px rgba(#ED7014, 0.35);
+        }
       }
     }
   }

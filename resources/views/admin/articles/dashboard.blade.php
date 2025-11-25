@@ -30,15 +30,22 @@
                         <li><strong>Precio max:</strong> €{{ number_format($article->price_max, 2) }}</li>
                         <li><strong>Peso:</strong> {{ $article->weight ?? '-' }} kg</li>
                         <li><strong>Talla:</strong> {{ $article->size ?? '-' }}</li>
+                        <li><strong>Familia:</strong> {{ $article->family->name ?? '-' }}</li>
                     </ul>
                 </div>
 
                 <footer class="product-card__footer">
-                    <a href="#" class="btn-card-action">Editar</a>
+                    <form action="{{ route('articles.edit',$article->id) }}" style="display:inline;">
+                        <button type="submit" class="btn-edit">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                    </form>
                     <form action="{{ route('articles.destroy', $article->id) }}" method="POST" class="delete-form" style="display:inline;">
                         @csrf
                         {{ method_field('DELETE') }}
-                         <button type="submit" class="btn-card-action btn-danger">Eliminar</button>
+                         <button type="submit" class="btn-eliminated">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                         </button>
                     </form>
                 </footer>
             </article>

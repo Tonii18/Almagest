@@ -60,8 +60,8 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Article::with('family')->findOrFail($id);
-        $family = Family::all();
-        return view('admin.articles.article-edit', compact('article', 'family'));
+        $families = Family::all();
+        return view('admin.articles.article-edit', compact('article', 'families'));
     }
 
     /**
@@ -82,7 +82,7 @@ class ArticleController extends Controller
             'family_id' => $request->input('family_id'),
         ]);
 
-        return redirect()->route('admin.article.dashboard');
+        return redirect()->route('articles.index');
     }
 
     /**

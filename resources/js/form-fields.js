@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         selectMin.appendChild(optionMin);
     }
 
+    const selectedValueMin = selectMin.getAttribute("data-selected");
+    if (selectedValueMin) {
+        selectMin.value = selectedValueMin;
+    }
+
     const selectMax = document.getElementById("max_price");
 
     for(let i = 2; i <= 100; i++){
@@ -18,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         optionMax.text = i;
 
         selectMax.appendChild(optionMax);
+    }
+
+    const selectedValueMax = selectMax.getAttribute("data-selected");
+    if (selectedValueMax) {
+        selectMax.value = selectedValueMax;
     }
 
     const radioButtons = document.querySelectorAll('input[name="radio"]');
