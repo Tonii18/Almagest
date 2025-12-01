@@ -32,7 +32,7 @@ Route::get('/information', [InformationController::class, 'index'])->name('infor
 
 Route::get('/home', function () {
     $user = auth()->user();
-    if ($user->type === 'a') {
+    if ($user->type === 'A') {
         return redirect()->route('admin.dashboard');
     }
     return redirect()->route('user.dashboard');

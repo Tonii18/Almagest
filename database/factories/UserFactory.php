@@ -30,7 +30,7 @@ class UserFactory extends Factory
         'email_verified_at' => now(),
         'password' => static::$password ??= Hash::make('password'),
         'company_id' => \App\Models\Company::all()->random()->id,
-        'type' => 'u',
+        'type' => 'U',
         'email_confirmed' => 0,
         'activated' => 0,
         'iscontact' => 0,
@@ -51,7 +51,7 @@ class UserFactory extends Factory
 
     public function admin(){
         return $this->state(fn(array $attributes) => [
-        'type' => 'a',
+        'type' => 'A',
         'email' => 'admin@admin.com',
         'password' => Hash::make('12345678'),
         'firstname' => 'Administrador',

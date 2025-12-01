@@ -62,7 +62,7 @@ class LoginController extends Controller
             ]);
         }
 
-        if ($user->type === 'a') {
+        if ($user->type === 'A') {
             return redirect()->route('admin.dashboard');
         }
 
