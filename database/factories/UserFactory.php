@@ -30,7 +30,7 @@ class UserFactory extends Factory
         'email_verified_at' => now(),
         'password' => static::$password ??= Hash::make('password'),
         'company_id' => \App\Models\Company::all()->random()->id,
-        'type' => 'U',
+        'type' => 'U', 
         'email_confirmed' => 0,
         'activated' => 0,
         'iscontact' => 0,
