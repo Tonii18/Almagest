@@ -65,3 +65,13 @@ Route::post('/admin/{id}/deactivate', [App\Http\Controllers\AdminController::cla
 //
 
 Route::resource('articles', ArticleController::class);
+
+Route::resource('company', CompanyController::class);
+
+// PDF Routes custom for PDF generation and emailing
+
+Route::post('/pdf/company', [App\Http\Controllers\PdfController::class, 'generateCompanyPdf'])->name('pdf.company');
+Route::get('/pdf/products', [App\Http\Controllers\PdfController::class, 'generateProductPdf'])->name('pdf.products');
+Route::post('/pdf/send-email', [App\Http\Controllers\PdfController::class, 'sendPdfByEmail'])->name('pdf.sendEmail');
+
+
