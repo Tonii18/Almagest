@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,8 @@ Route::post('/admin/{id}/deactivate', [App\Http\Controllers\AdminController::cla
 
 Route::resource('articles', ArticleController::class);
 
-Route::resource('company', CompanyController::class);
+Route::get('/company/profile', [CompanyController::class, 'edit'])->name('company.profile');
+
 
 // PDF Routes custom for PDF generation and emailing
 

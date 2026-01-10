@@ -1,0 +1,72 @@
+// USER DASHBOARD
+
+.user-dashboard {
+    min-height: calc(100vh - 160px);
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.dashboard-card {
+    background: $bg-card;
+    border-radius: 1.25rem;
+    padding: 3rem 2rem;
+    text-decoration: none;
+    color: $text-dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-shadow: $shadow;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+
+    i {
+        font-size: 3.2rem;
+        color: $primary;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        border-color: lighten($primary, 20%);
+    }
+
+    &.secondary {
+        i {
+            color: #3b82f6;
+        }
+
+        &:hover {
+            border-color: lighten(#3b82f6, 20%);
+        }
+    }
+}
+
+// RESPONSIVE
+
+@media (max-width: 768px) {
+    .user-dashboard-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 2.5rem 1.5rem;
+
+        i {
+            font-size: 2.6rem;
+        }
+    }
+}

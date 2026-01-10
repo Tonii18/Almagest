@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Company;
+use App\Models\DeliveryTerm;
+use App\Models\TransportPrice;
+use App\Models\PaymentTerm;
+use App\Models\BankEntity;
+use App\Models\Discount;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -14,14 +21,14 @@ class CompanyController extends Controller
     {
         $user = auth()->user();
         $company = Company::with([
-        'deliveryTerm', 
-        'transport', 
-        'payment_term', 
-        'bank_entity', 
-        'discount',
-        'user' => function($query) {
-            $query->where('iscontact', 1); 
-        }
+            'deliveryTerm',
+            'transport',
+            'payment_term',
+            'bank_entity',
+            'discount',
+            'user' => function ($query) {
+                $query->where('iscontact', 1);
+            }
         ])->find($user->company_id);
         return view('user.company.dashboard', compact('company', 'user'));
     }
@@ -56,6 +63,25 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         //
+        $user = Auth::user();
+
+        $company = Company::with([
+            'contactPerson',
+            'deliveryTerm',
+            'transportPrice',
+            'paymentTerm',
+            'bankEntity',
+            'discount'
+        ])->findOrFail($user->company_id);
+
+        return view('company.profile', [
+            'company' => $company,
+            'deliveryTerms' => DeliveryTerm::all(),
+            'transportPrices' => TransportPrice::all(),
+            'paymentTerms' => PaymentTerm::all(),
+            'bankEntities' => BankEntity::all(),
+            'discounts' => Discount::all(),
+        ]);
     }
 
     /**
