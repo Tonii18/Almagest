@@ -1,0 +1,139 @@
+// VARIABLES (puedes ajustarlas según tu paleta)
+$form-bg: #ffffff;
+$form-border-radius: 12px;
+$form-padding: 2rem;
+$form-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+$label-color: #374151; // gris oscuro
+$input-bg: #f9fafb;
+$input-border: #d1d5db; // gris claro
+$input-focus-border: $primary; // usar tu color principal
+$btn-primary-bg: $primary;
+$btn-secondary-bg: #9ca3af; // gris
+$btn-color: #ffffff;
+
+// FORMULARIO EMPRESA
+.company-profile {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: $form-padding;
+    background: $form-bg;
+    border-radius: $form-border-radius;
+    box-shadow: $form-shadow;
+    font-family: 'Poppins', sans-serif;
+
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: $primary;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-weight: 600;
+                color: $label-color;
+                margin-bottom: 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            input,
+            select {
+                padding: 0.65rem 0.8rem;
+                border: 1px solid $input-border;
+                border-radius: 8px;
+                background: $input-bg;
+                font-size: 0.95rem;
+                font-family: inherit;
+                transition: border-color 0.2s, box-shadow 0.2s;
+
+                &:focus {
+                    outline: none;
+                    border-color: $input-focus-border;
+                    box-shadow: 0 0 0 2px rgba($primary, 0.2);
+                }
+
+                &:disabled {
+                    background: #f3f4f6;
+                    cursor: not-allowed;
+                }
+            }
+
+            select {
+                cursor: pointer;
+            }
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+
+            button,
+            a {
+                padding: 0.75rem 1.5rem;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 0.95rem;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                transition: all 0.25s ease-in-out;
+                cursor: pointer;
+            }
+
+            .btn-primary {
+                background: $btn-primary-bg;
+                color: $btn-color;
+                border: none;
+                box-shadow: 0 4px 12px rgba($primary, 0.2);
+
+                &:hover {
+                    background: darken($btn-primary-bg, 5%);
+                    transform: translateY(-2px);
+                }
+            }
+
+            .btn-secondary {
+                background: $btn-secondary-bg;
+                color: $btn-color;
+                border: none;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+                &:hover {
+                    background: darken($btn-secondary-bg, 5%);
+                    transform: translateY(-2px);
+                }
+            }
+        }
+    }
+}
+
+// RESPONSIVE
+@media (max-width: 768px) {
+    .company-profile {
+        padding: 1.5rem;
+
+        form {
+            .form-actions {
+                flex-direction: column;
+
+                button,
+                a {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

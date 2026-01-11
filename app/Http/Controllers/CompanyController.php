@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\DeliveryTerm;
-use App\Models\TransportPrice;
+use App\Models\Transport;
 use App\Models\PaymentTerm;
 use App\Models\BankEntity;
 use App\Models\Discount;
@@ -15,69 +14,49 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar el dashboard de la empresa del usuario
      */
     public function index()
     {
         $user = auth()->user();
+
         $company = Company::with([
             'deliveryTerm',
             'transport',
-            'payment_term',
-            'bank_entity',
+            'paymentTerm',
+            'bankEntity',
             'discount',
-            'user' => function ($query) {
-                $query->where('iscontact', 1);
-            }
+            'contactPerson'
         ])->find($user->company_id);
+
         return view('user.company.dashboard', compact('company', 'user'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar el formulario de edición del perfil
      */
-    public function create()
+    public function edit($id)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
         $user = Auth::user();
+
+        // Solo puede editar su propia empresa
+        if ($id != $user->company_id) {
+            abort(403, 'No tienes permiso para editar esta empresa.');
+        }
 
         $company = Company::with([
             'contactPerson',
             'deliveryTerm',
-            'transportPrice',
+            'transport',
             'paymentTerm',
             'bankEntity',
             'discount'
         ])->findOrFail($user->company_id);
 
-        return view('company.profile', [
+        return view('user.company.profile', [
             'company' => $company,
             'deliveryTerms' => DeliveryTerm::all(),
-            'transportPrices' => TransportPrice::all(),
+            'transportPrices' => Transport::all(), // coincide con Blade
             'paymentTerms' => PaymentTerm::all(),
             'bankEntities' => BankEntity::all(),
             'discounts' => Discount::all(),
@@ -85,18 +64,35 @@ class CompanyController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar los datos de la empresa
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $user = Auth::user();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Solo puede actualizar su propia empresa
+        if ($id != $user->company_id) {
+            abort(403, 'No tienes permiso para actualizar esta empresa.');
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'cif' => 'required|string|max:50',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:50',
+            'del_term_id' => 'required|exists:delivery_terms,id',
+            'transport_id' => 'required|exists:transports,id',
+            'payment_term_id' => 'required|exists:payment_terms,id',
+            'bank_entity_id' => 'required|exists:bank_entities,id',
+            'discount_id' => 'required|exists:discounts,id',
+        ]);
+
+        $company = Company::findOrFail($id);
+        $company->update($request->all());
+
+        return redirect()->route('company.edit', $company->id)
+                         ->with('success', 'Datos de la empresa actualizados correctamente.');
     }
 }

@@ -37,7 +37,7 @@ Route::get('/home', function () {
         return redirect()->route('admin.dashboard');
     }
     return redirect()->route('user.dashboard');
-})->middleware('auth', 'verified')->name('home');
+})->middleware('auth')->name('home');
 
 // Admin panel
 
@@ -67,7 +67,7 @@ Route::post('/admin/{id}/deactivate', [App\Http\Controllers\AdminController::cla
 
 Route::resource('articles', ArticleController::class);
 
-Route::get('/company/profile', [CompanyController::class, 'edit'])->name('company.profile');
+Route::resource('company', CompanyController::class);
 
 
 // PDF Routes custom for PDF generation and emailing

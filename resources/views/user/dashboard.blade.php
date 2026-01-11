@@ -6,7 +6,7 @@
 
     <div class="user-dashboard">
         <div class="user-dashboard-actions">
-            <a href="{{ route('company.profile') }}" class="dashboard-card">
+            <a href="{{ route('company.edit', auth()->user()->company_id) }}" class="dashboard-card">
                 <i class="fa-solid fa-chart-pie"></i>
                 <span>Datos de mi empresa</span>
             </a>

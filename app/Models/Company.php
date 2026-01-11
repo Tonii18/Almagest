@@ -48,12 +48,12 @@ class Company extends Model
         return $this->belongsTo(Transport::class, 'transport_id');
     }
 
-    public function payment_term(): BelongsTo
+    public function paymentTerm(): BelongsTo
     {
         return $this->belongsTo(PaymentTerm::class, 'payment_term_id');
     }
 
-    public function bank_entity(): BelongsTo
+    public function bankEntity(): BelongsTo
     {
         return $this->belongsTo(BankEntity::class, 'bank_entity_id');
     }
@@ -68,6 +68,10 @@ class Company extends Model
         return $this->hasMany(Product::class, 'company_id');
     }
 
+    public function contactPerson(): HasMany
+    {
+        return $this->hasMany(User::class, 'company_id')->where('iscontact', 1);
+    }
 
 }
 
