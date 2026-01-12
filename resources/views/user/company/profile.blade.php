@@ -125,7 +125,7 @@
             <select name="discount_id" required>
                 @foreach ($discounts as $discount)
                     <option value="{{ $discount->id }}" @selected($company->discount_id == $discount->id)>
-                        {{ $discount->description }}
+                        {{ $discount->discount }}
                     </option>
                 @endforeach
             </select>
