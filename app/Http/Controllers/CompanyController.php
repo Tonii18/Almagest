@@ -86,7 +86,7 @@ class CompanyController extends Controller
             'transport_id' => 'required|exists:transports,id',
             'payment_term_id' => 'required|exists:payment_terms,id',
             'bank_entity_id' => 'required|exists:bank_entities,id',
-            'discount_id' => 'required|exists:discounts,id',
+            'discount_id' => 'required|exists:discount,id',
         ]);
 
         $company = Company::findOrFail($id);

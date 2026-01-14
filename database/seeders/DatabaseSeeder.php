@@ -9,6 +9,7 @@ use App\Models\DeliveryTerm;
 use App\Models\Discount;
 use App\Models\Family;
 use App\Models\PaymentTerm;
+use App\Models\Product;
 use App\Models\Transport;
 use Database\Factories\FamilyFactory;
 use Illuminate\Database\Seeder;
@@ -29,8 +30,9 @@ class DatabaseSeeder extends Seeder
         PaymentTerm::factory(20)->create();
         Transport::factory(10)->create();
         Company::factory(10)->create();
-        User::factory()->admin()->create();
+        //User::factory()->admin()->create();
 
         Family::factory(10)->create();
+        Product::factory(10)->create();
     }
 }

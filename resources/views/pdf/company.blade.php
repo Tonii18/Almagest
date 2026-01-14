@@ -20,55 +20,55 @@
         <table>
             <tr>
                 <th colspan="4" class="title">Ficha empresa</th>
-                <th>Codigo</th>
+                <th>Codigo: {{ $company->id ?? '' }}</th>
             </tr>
             <tr>
-                <td rowspan="6" class="vertical">Logotipo</td>
+                 <td rowspan="6"><img src="{{ asset('img/logo.png') }}" alt="Logo de la empresa" style="width:25px;"></td>
                 <td>Nombre</td>
-                <td colspan="3"> {{ $nombre ?? '' }}</td>
+                <td colspan="3">{{ $company->name ?? '' }}</td>
             </tr>
             <tr>
                 <td>Dirección</td>
-                <td colspan="3">{{ $direccion ?? '' }}</td>
+                <td colspan="3">{{ $company->address ?? '' }}</td>
             </tr>
             <tr>
                 <td>Población</td>
-                <td>{{ $poblacion ?? '' }}</td>
+                <td>{{ $company->city ?? '' }}</td>
                 <td>CIF/NIF</td>
-                <td>{{ $cif ?? '' }}</td>
+                <td>{{ $company->cif ?? '' }}</td>
             </tr>
             <tr>
                 <td>Persona de contacto</td>
-                <td>{{ $contacto ?? '' }}</td>
+                <td>{{ optional($company->contactPerson->first())->firstname ?? '' }} {{ optional($company->contactPerson->first())->secondname ?? '' }}</td>
                 <td>Cargo</td>
-                <td>{{ $cargo ?? '' }}</td>
+                <td>Gerente</td>
             </tr>
             <tr>
                 <td>Correo electrónico</td>
-                <td>{{ $email ?? '' }}</td>
+                <td>{{ $company->email ?? '' }}</td>
                 <td>Teléfono</td>
-                <td>{{ $telefono ?? '' }}</td>
+                <td>{{ $company->phone ?? '' }}</td>
             </tr>
         </table>
         <br>
         <table>
             <tr>
                 <td>Plazo de entrega:</td>
-                <td>{{ $plazo_entrega ?? '' }}</td>
+                <td>{{ $company->deliveryTerm->description ?? '' }}</td>
                 <td>Descuentos:</td>
-                <td>{{ $descuentos ?? '' }}</td>
+                <td>{{ $company->discount->discount ?? '' }}</td>
             </tr>
             <tr>
                 <td>Portes:</td>
-                <td colspan="3">{{ $portes ?? '' }}</td>
+                <td colspan="3">{{ $company->transport->price ?? '' }}</td>
             </tr>
             <tr>
                 <td>Condiciones de pago:</td>
-                <td colspan="3">{{ $condiciones_pago ?? '' }}</td>
+                <td colspan="3">{{ $company->paymentTerm->description ?? '' }}</td>
             </tr>
             <tr>
                 <td>Entidad bancaria:</td>
-                <td colspan="3">{{ $banco ?? '' }}</td>
+                <td colspan="3">{{ $company->bankEntity->name ?? '' }}</td>
             </tr>
         </table>
     </body>

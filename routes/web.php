@@ -69,11 +69,12 @@ Route::resource('articles', ArticleController::class);
 
 Route::resource('company', CompanyController::class);
 
+Route::view('/formulario', 'user.company.form');
 
 // PDF Routes custom for PDF generation and emailing
 
-Route::post('/pdf/company', [App\Http\Controllers\PdfController::class, 'generateCompanyPdf'])->name('pdf.company');
+Route::get('/pdf/company/{id}', [App\Http\Controllers\PdfController::class, 'generateCompanyPdf'])->name('pdf.company');
 Route::get('/pdf/products', [App\Http\Controllers\PdfController::class, 'generateProductPdf'])->name('pdf.products');
 Route::post('/pdf/send-email', [App\Http\Controllers\PdfController::class, 'sendPdfByEmail'])->name('pdf.sendEmail');
-
+Route::get('/pdf/form', [App\Http\Controllers\PdfController::class, 'showForm'])->name('pdf.form');
 
