@@ -116,7 +116,7 @@ class PdfController extends Controller
                     ->attachData($productPdf->output(), 'products.pdf', [
                         'mime' => 'application/pdf',
                     ])
-                    ->html('Por favor, encuentre los documentos PDF adjuntos.');
+                    ->html('PDF generado y enviado correctamente.');
             });
 
             $emailList = implode(', ', $emails);
